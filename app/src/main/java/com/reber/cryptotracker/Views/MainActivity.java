@@ -77,6 +77,20 @@ public class MainActivity extends AppCompatActivity {
             adapter.setFilteredList(filteredList);
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.item1){
+            loadfromapi();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void loadfromapi(){
         API api = retrofit.create(API.class);
