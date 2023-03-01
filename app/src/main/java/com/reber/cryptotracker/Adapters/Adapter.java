@@ -14,9 +14,10 @@ import com.reber.cryptotracker.Models.Model;
 import com.reber.cryptotracker.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final ArrayList<Model> cryptoList;
+    private ArrayList<Model> cryptoList;
     TextView nameRow;
     TextView priceRow;
     TextView symbolRow;
@@ -26,6 +27,10 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public Adapter(ArrayList<Model> cryptoList) {
         this.cryptoList = cryptoList;
+    }
+    public void setFilteredList(List<Model> filteredList){
+        this.cryptoList = (ArrayList<Model>) filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull

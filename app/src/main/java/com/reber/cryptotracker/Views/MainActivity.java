@@ -1,11 +1,17 @@
 package com.reber.cryptotracker.Views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,6 +22,7 @@ import com.reber.cryptotracker.Service.API;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Model> Model;
+    private SearchView searchView;
     RecyclerView recyclerView;
     Adapter adapter;
     private final String BASE_URL= "https://api.coinpaprika.com/v1/";
@@ -35,12 +43,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
+        searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Cryptocurrencies");
         Gson gson = new GsonBuilder().setLenient().create();
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         loadfromapi();
     }
+
+    private void filterList(String text) {
+        List<Model> filteredList = new ArrayList<>();
+        for (Model model : Model){
+            if(model.name.toLowerCase(Locale.ROOT).contains(text.toLowerCase())){
+                filteredList.add(model);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(this, "No data found.", Toast.LENGTH_SHORT).show();
+        }else{
+            adapter.setFilteredList(filteredList);
+        }
+    }
+
     private void loadfromapi(){
         API api = retrofit.create(API.class);
         Call<List<Model>> call = api.getData();
