@@ -48,16 +48,21 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         nameRow.setText(cryptoList.get(position).name);
         priceRow.setText(cryptoList.get(position).price);
         symbolRow.setText(cryptoList.get(position).symbol);
-        double perCheck = Double.parseDouble(cryptoList.get(position).per);
-        if(perCheck >0){
-            chartStatus.setImageResource(R.drawable.profits);
+        try{
+            double perCheck = Double.parseDouble(cryptoList.get(position).per);
+            if(perCheck >0){
+                chartStatus.setImageResource(R.drawable.profits);
 
-        }else if (perCheck <0){
-            chartStatus.setImageResource(R.drawable.loss);
-        }else if (perCheck==0){
-            chartStatus.setImageResource(R.drawable.minus);
+            }else if (perCheck <0){
+                chartStatus.setImageResource(R.drawable.loss);
+            }else if (perCheck==0){
+                chartStatus.setImageResource(R.drawable.minus);
+            }
+            perRow.setText("%"+cryptoList.get(position).per);
+        }catch(Exception e){
+            e.printStackTrace();
         }
-        perRow.setText("%"+cryptoList.get(position).per);
+
     }
 
 
