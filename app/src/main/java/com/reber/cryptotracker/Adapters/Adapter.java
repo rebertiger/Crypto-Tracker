@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +16,13 @@ import com.reber.cryptotracker.R;
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<Model> cryptoList;
+    private final ArrayList<Model> cryptoList;
     TextView nameRow;
     TextView priceRow;
     TextView symbolRow;
     TextView perRow;
-    private String[] colors = {"#E1BEE7","#9FA8DA","#42A5F5","#80D8FF","#B2DFDB","#C8E6C9","#69F0AE"};
+    ImageView chartStatus;
+    private final String[] colors = {"#E1BEE7","#9FA8DA","#42A5F5","#80D8FF","#B2DFDB","#C8E6C9","#69F0AE"};
 
     public Adapter(ArrayList<Model> cryptoList) {
         this.cryptoList = cryptoList;
@@ -42,9 +44,19 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         priceRow = holder.itemView.findViewById(R.id.priceRow);
         symbolRow = holder.itemView.findViewById(R.id.symbolRow);
         perRow = holder.itemView.findViewById(R.id.perRow);
+        chartStatus = holder.itemView.findViewById(R.id.chartStatus);
         nameRow.setText(cryptoList.get(position).name);
         priceRow.setText(cryptoList.get(position).price);
         symbolRow.setText(cryptoList.get(position).symbol);
+        double perCheck = Double.parseDouble(cryptoList.get(position).per);
+        if(perCheck >0){
+            chartStatus.setImageResource(R.drawable.profits);
+
+        }else if (perCheck <0){
+            chartStatus.setImageResource(R.drawable.loss);
+        }else if (perCheck==0){
+            chartStatus.setImageResource(R.drawable.minus);
+        }
         perRow.setText("%"+cryptoList.get(position).per);
     }
 

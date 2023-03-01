@@ -1,44 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    margin
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
 
 
     <TextView
         android:id="@+id/symbolRow"
-        android:layout_width="match_parent"
-        android:textSize="25sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:textColor="@android:color/background_light"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/nameRow"
-        android:layout_width="match_parent"
-        android:textSize="22sp"
-        android:layout_marginLeft="10dp"
-        android:textColor="@android:color/background_light"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/background_light"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/symbolRow" />
+
     <TextView
         android:id="@+id/priceRow"
-        android:layout_width="match_parent"
-        android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:textColor="@android:color/background_light"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRow" />
+
     <TextView
         android:id="@+id/perRow"
-        android:layout_width="match_parent"
-        android:textSize="20sp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="65dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="36dp"
+        android:text="TextView"
         android:textColor="@android:color/background_light"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chartStatus"
+        app:layout_constraintTop_toBottomOf="@+id/priceRow" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/chartStatus"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/priceRow"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="@+id/priceRow"
+        app:srcCompat="@drawable/profits" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
