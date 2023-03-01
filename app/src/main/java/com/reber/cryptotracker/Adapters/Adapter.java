@@ -23,7 +23,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     TextView symbolRow;
     TextView perRow;
     ImageView chartStatus;
-    private final String[] colors = {"#E1BEE7","#9FA8DA","#42A5F5","#80D8FF","#B2DFDB","#C8E6C9","#69F0AE"};
+    private final String[] colors = {"#F7DAD9","#B2DFDB","#FFE0B2","#E6D4E9","#FFF9C4","#D1C4E9","#FFC8B2"};
 
     public Adapter(ArrayList<Model> cryptoList) {
         this.cryptoList = cryptoList;

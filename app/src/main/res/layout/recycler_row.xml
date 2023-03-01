@@ -11,11 +11,11 @@
 
     <TextView
         android:id="@+id/symbolRow"
+        android:textStyle="bold"
         android:layout_width="200dp"
         android:layout_height="32dp"
         android:layout_marginStart="12dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
+        android:textColor="#3f3f3f"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -27,8 +27,7 @@
         android:layout_width="200dp"
         android:layout_height="29dp"
         android:layout_marginStart="12dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
+        android:textColor="#3f3f3f"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,8 +39,7 @@
         android:layout_width="220dp"
         android:layout_height="26dp"
         android:layout_marginLeft="12dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
+        android:textColor="#3f3f3f"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -50,16 +48,15 @@
 
     <TextView
         android:id="@+id/perRow"
-        android:layout_width="65dp"
-        android:layout_height="35dp"
+        android:layout_width="77dp"
+        android:layout_height="30dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="12dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
+        android:textColor="#3f3f3f"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toEndOf="@+id/chartStatus"
         app:layout_constraintTop_toBottomOf="@+id/priceRow" />
 
@@ -69,10 +66,10 @@
         android:layout_height="39dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toEndOf="@+id/priceRow"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919"
+        app:layout_constraintVertical_bias="0.913"
         app:srcCompat="@drawable/profits" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
