@@ -8,4 +8,6 @@ public class Model {
     public String symbol;
     @SerializedName("price_usd")
     public String price;
+    @SerializedName("percent_change_24h")
+    public String per;
 }
